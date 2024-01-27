@@ -39,7 +39,7 @@ or
 ``` bash 
 npm install
 ```
--run 
+- run 
 
 ```bash
 
