@@ -4,9 +4,9 @@
 
 ### basic react app using create-react-app
 
-project name- 01basicreact
+- project name: 01basicreact
 
-cra-template- it was used before react 2022 dec update currently not in use
+- cra-template: it was used before react 2022 dec update currently not in use
 
 ```bash
 
@@ -39,7 +39,7 @@ or
 ``` bash 
 npm install
 ```
--run 
+- run 
 
 ```bash
 
