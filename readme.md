@@ -53,7 +53,7 @@ React Hooks are a powerful feature that allow you to use state and other React f
 
 #### useState
 
-This hook allows you to add state to functional components¹. It returns a pair: the current state value and a function that lets you update it². You can use it when you want to keep track of a variable's value that might change over time and cause the component to re-render¹.
+- This hook allows you to add state to functional components¹. It returns a pair: the current state value and a function that lets you update it². You can use it when you want to keep track of a variable's value that might change over time and cause the component to re-render¹.
 
 ```jsx
 const [count, setCount] = useState(0);
@@ -89,3 +89,12 @@ const memoizedCallback = useCallback(() => {
 ```
 
 -- Remember, hooks are only available in function components and custom hooks¹. Always use hooks at the top level of your React function². Don't call hooks inside loops, conditions, or nested functions to ensure that they're called in the same order each time a component renders².
+
+#### useId hook
+- Use of useId hook is generate random id for the html elements prefer not to use for css use
+
+```jsx
+ const myId = useId();
+ console.log(myId);
+```
+
