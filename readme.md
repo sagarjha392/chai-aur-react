@@ -13,39 +13,49 @@
 npx create-react-app 01basicreact #creating a react application
 
 ```
-``` bash
+
+```bash
 cd .\01basicreact # go to directory
 ```
+
 - run
-``` bash
+
+```bash
 npm run start # start the application server
-``` 
+```
+
 - build
-``` bash
+
+```bash
 npm run build # build the production interface for  application server
 ```
+
 Do not use this as this was depreciated by the react development team
 
-
 ### basic react app using create vite@latest
-``` bash
-npm create vite@latest 
+
+```bash
+npm create vite@latest
 ```
-we need to initial node 
-``` bash
-npm i 
-``` 
-or 
-``` bash 
+
+we need to initial node
+
+```bash
+npm i
+```
+
+or
+
+```bash
 npm install
 ```
-- run 
+
+- run
 
 ```bash
 
 npm run dev
 ```
-
 
 ### React Hooks
 
@@ -75,7 +85,7 @@ useEffect(() => {
 
 ```jsx
 const inputEl = useRef(null);
-<input ref={inputEl} type="text" />
+<input ref={inputEl} type="text" />;
 ```
 
 #### useCallback
@@ -88,17 +98,13 @@ const memoizedCallback = useCallback(() => {
 }, [a, b]);
 ```
 
-<<<<<<< HEAD
 -- Remember, hooks are only available in function components and custom hooks¹. Always use hooks at the top level of your React function². Don't call hooks inside loops, conditions, or nested functions to ensure that they're called in the same order each time a component renders².
 
 #### useId hook
+
 - Use of useId hook is generate random id for the html elements prefer not to use for css use
 
 ```jsx
- const myId = useId();
- console.log(myId);
+const myId = useId();
+console.log(myId);
 ```
-
-=======
-- Remember, hooks are only available in function components and custom hooks¹. Always use hooks at the top level of your React function². Don't call hooks inside loops, conditions, or nested functions to ensure that they're called in the same order each time a component renders².
->>>>>>> 691edd906ab69f4384c5405f120dc9700a7abfd1
