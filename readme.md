@@ -49,7 +49,7 @@ npm run dev
 
 ### React Hooks
 
-React Hooks are a powerful feature that allow you to use state and other React features without writing a class. Here's a brief overview of the hooks you mentioned:
+- - React Hooks are a powerful feature that allow you to use state and other React features without writing a class. Here's a brief overview of the hooks you mentioned:
 
 #### useState
 
@@ -88,6 +88,7 @@ const memoizedCallback = useCallback(() => {
 }, [a, b]);
 ```
 
+<<<<<<< HEAD
 -- Remember, hooks are only available in function components and custom hooks¹. Always use hooks at the top level of your React function². Don't call hooks inside loops, conditions, or nested functions to ensure that they're called in the same order each time a component renders².
 
 #### useId hook
@@ -98,3 +99,6 @@ const memoizedCallback = useCallback(() => {
  console.log(myId);
 ```
 
+=======
+- Remember, hooks are only available in function components and custom hooks¹. Always use hooks at the top level of your React function². Don't call hooks inside loops, conditions, or nested functions to ensure that they're called in the same order each time a component renders².
+>>>>>>> 691edd906ab69f4384c5405f120dc9700a7abfd1
