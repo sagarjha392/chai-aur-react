@@ -186,7 +186,9 @@ const router = createBrowserRouter(
   )
 );
 ```
+
 #### New hooks and features in react-router-dom
+
 - react router provides some new speacial methods
 
 1. loader
@@ -215,4 +217,110 @@ function Github() {
 }
 
 export default Github;
+```
+
+### Context Api
+
+- Step 1: create context and store
+
+```js
+import React from "react";
+
+const UserContext = React.createContext();
+
+export default UserContext;
+```
+
+- Step2: create a context provider
+
+```jsx
+import React, { useState } from "react";
+import UserContext from "./UserContext";
+
+const UserContextProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export default UserContextProvider;
+```
+
+- Step 3: Using Context Provider
+- We can use this provider in App.jsx or Main.jsx file
+
+```jsx
+import "./App.css";
+import UserContextProvider from "./context/UserContextProvider";
+
+function App() {
+  return (
+    <UserContextProvider>
+      <h1>React with chai and share is important</h1>
+    </UserContextProvider>
+  );
+}
+
+export default App;
+```
+
+- Passing and accessing data using context
+  
+##### Filename: Login.jsx
+
+```jsx
+import React, { useState, useContext } from "react";
+import UserContext from "../context/UserContext";
+
+function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { setUser } = useContext(UserContext); // passing data by setting user's context
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUser({ username, password });
+  };
+  return (
+    <div>
+      <h2>Login</h2>
+      <input
+        type="text"
+        placeholder="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      /> <input
+        type="text"
+        placeholder="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
+export default Login;
+```
+
+##### Filename: Profile.jsx
+```jsx
+import React, { useContext } from "react";
+import UserContext from "../context/UserContext";
+
+function Profile() {
+  const { user } = useContext(UserContext); // accessing value from the context
+  if (!user) {
+    return <div>Please Login</div>;
+  }
+
+  return <div>Welcome {user.username} your password is: {user.password}</div>;
+}
+
+export default Profile;
+
 ```
