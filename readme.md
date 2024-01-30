@@ -108,3 +108,111 @@ const memoizedCallback = useCallback(() => {
 const myId = useId();
 console.log(myId);
 ```
+
+### Routes
+
+#### Installation
+
+```bash
+npm install react-router-dom
+```
+
+#### routing methods of Links and urls
+
+- Link: tag is use to navigate from one page to another without any reloading of the page
+
+```jsx
+<Link
+  to="#"
+  className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+>
+  Log in
+</Link>
+```
+
+- NavLink: tag is used in navigation bar to navigate from one page to another Like 'Link' tag with speacial features of isActive
+
+```jsx
+<NavLink
+  to={"/"}
+  className={({ isActive }) =>
+    `block py-2 pr-4 pl-3 duration-200 ${
+      isActive ? "text-orange-700" : "text-gray-700"
+    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 `
+  }
+>
+  Home
+</NavLink>
+```
+
+#### How to Creating Routes ?
+
+- Method 1:
+
+```jsx
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
+]);
+```
+
+- Method 2:
+
+```jsx
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route path="" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="user/:userid" element={<User />} />
+    </Route>
+  )
+);
+```
+#### New hooks and features in react-router-dom
+- react router provides some new speacial methods
+
+1. loader
+
+```jsx
+export const githubInfoLoader = async () => {
+  const response = await fetch("https://api.github.com/users/sagarjha392");
+  return response.json();
+};
+<Route path="github" element={<Github />} loader={githubInfoLoader} />;
+```
+
+- use useLoader hook to fetch information from the loader
+
+```jsx
+import { useLoaderData } from "react-router-dom";
+
+function Github() {
+  const data = useLoaderData();
+  return (
+    <div className="text-center m-4 bg-gray-500 text-white p-4 text-3xl">
+      Github Followers: {data.followers}
+      <img src={data.avatar_url} alt="profile pic" width={300} />
+    </div>
+  );
+}
+
+export default Github;
+```
