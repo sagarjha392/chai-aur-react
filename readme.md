@@ -381,8 +381,8 @@ export default Profile;
   export const store = configureStore({ reducer: todoReducer});
   ```
 - Implementation: exchange of data of store and components
-  * <Provider>: Wraps the root component of your application, providing access to the Redux store to all connected components.
-  
+  * `<Provider>`: Wraps the root component of your application, providing access to the Redux store to all connected components.
+
   * useDispatch() is a hook provided by the react-redux library. It allows functional components in a React application to dispatch actions to the Redux store. This hook is commonly used when you want to trigger state changes in response to user interactions, asynchronous operations, or other events within your components.
 
   * useSelector is another hook provided by the react-redux library. It allows functional components in a React application to extract and read data from the Redux store. This hook is particularly useful when you need to access specific pieces of the global state managed by Redux within your components.
