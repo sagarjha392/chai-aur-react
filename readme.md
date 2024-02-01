@@ -268,7 +268,7 @@ export default App;
 ```
 
 - Passing and accessing data using context
-  
+
 ##### Filename: Login.jsx
 
 ```jsx
@@ -308,6 +308,7 @@ export default Login;
 ```
 
 ##### Filename: Profile.jsx
+
 ```jsx
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
@@ -318,9 +319,72 @@ function Profile() {
     return <div>Please Login</div>;
   }
 
-  return <div>Welcome {user.username} your password is: {user.password}</div>;
+  return (
+    <div>
+      Welcome {user.username} your password is: {user.password}
+    </div>
+  );
 }
 
 export default Profile;
-
 ```
+
+### react-redux and react-redux-toolkit
+
+- Purpose: react-redux and redux-toolkit are libraries commonly used in the React ecosystem for state management, particularly when working with Redux.
+
+- Implementation: create a central storage to store state
+  * Step 1: Create a store
+  ```js
+  import { configureStore } from "@reduxjs/toolkit";
+  export const store = configureStore({});
+  ```
+  * Step 2: create a StoreSlicer
+    + create a initialstate instance of store
+    ```js
+    const initialState = {
+      todos: [
+        {
+          id: 1,
+          text: "Hello World",
+        },
+      ],
+    };
+    ```
+    + create a Slice 
+    ```js
+    export const todoSlice = createSlice({
+      name: "todo",
+      initialState,
+      reducers: {
+        addTodo: (state, action) => {
+          const todo = {
+            id: nanoid(),
+            text: action.payload,
+          };
+          state.todos.push(todo);
+        },
+        removeTodo: (state, action) => {
+          state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+        },
+      },
+    });
+    export const {addTodo,updateTodo, removeTodo} = todoSlice.actions;
+    export default todoSlice.reducer;
+    ```
+
+  * Step 3: pass the reducer 
+  ```js
+  import {configureStore} from "@reduxjs/toolkit";
+  import todoReducer from "../features/todo/todoSlice";
+  <!-- todoReducer= todoSlice.reducer  -->
+  export const store = configureStore({ reducer: todoReducer});
+  ```
+- Implementation: exchange of data of store and components
+  * <Provider>: Wraps the root component of your application, providing access to the Redux store to all connected components.
+  
+  * useDispatch() is a hook provided by the react-redux library. It allows functional components in a React application to dispatch actions to the Redux store. This hook is commonly used when you want to trigger state changes in response to user interactions, asynchronous operations, or other events within your components.
+
+  * useSelector is another hook provided by the react-redux library. It allows functional components in a React application to extract and read data from the Redux store. This hook is particularly useful when you need to access specific pieces of the global state managed by Redux within your components.
+
+
